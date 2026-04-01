@@ -38,14 +38,13 @@ export const users = createTable("user", (d) => ({
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
   name: d.varchar({ length: 255 }),
-  email: d.varchar({ length: 255 }).notNull(),
-  emailVerified: d
-    .timestamp({
-      mode: "date",
-      withTimezone: true,
-    })
-    .$defaultFn(() => /* @__PURE__ */ new Date()),
+  email: d.varchar({ length: 255 }).notNull().unique(),
+  emailVerified: d.timestamp({
+    mode: "date",
+    withTimezone: true,
+  }),
   image: d.varchar({ length: 255 }),
+  password: d.varchar({ length: 255 }),
 }));
 
 export const usersRelations = relations(users, ({ many }) => ({
