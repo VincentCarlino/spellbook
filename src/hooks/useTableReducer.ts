@@ -48,7 +48,7 @@ function loadInitialState(): TableState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return base;
-    const persisted = JSON.parse(raw);
+    const persisted = JSON.parse(raw) as PersistedTableState;
     if (persisted.version === 1) {
       return { ...base, cards: persisted.cards, topZIndex: persisted.topZIndex };
     }
@@ -56,7 +56,7 @@ function loadInitialState(): TableState {
       return { ...base, cards: persisted.cards, decks: persisted.decks, topZIndex: persisted.topZIndex };
     }
     if (persisted.version === 3) {
-      const p = persisted as PersistedTableState;
+      const p = persisted;
       return { ...base, cards: p.cards, decks: p.decks, hands: p.hands, topZIndex: p.topZIndex, lifePoints: p.lifePoints ?? { p1: 8000, p2: 8000 }, turnIndicator: p.turnIndicator ?? { turn: 'p1', phase: 'Draw' } };
     }
     return base;

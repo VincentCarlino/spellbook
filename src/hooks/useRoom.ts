@@ -46,10 +46,10 @@ export function isLocalOnlyAction(action: TableAction): boolean {
 // Stubbed — multiplayer deferred. Table runs in solo mode only.
 export function useRoom(_params: UseRoomParams): UseRoomReturn {
   return {
-    connect: () => {},
-    disconnect: () => {},
-    sendAction: () => {},
-    sendPing: () => {},
-    sendStateSync: () => {},
+    connect: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+    disconnect: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+    sendAction: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+    sendPing: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+    sendStateSync: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
   };
 }

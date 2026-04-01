@@ -123,7 +123,7 @@ export type TableAction =
   | { type: 'LOAD_REMOTE_STATE'; payload: PersistedTableState };
 
 export interface PersistedTableState {
-  version: 3;
+  version: number;
   cards: CardState[];
   decks: DeckState[];
   hands: HandState[];

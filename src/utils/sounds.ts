@@ -1,7 +1,7 @@
 let ctx: AudioContext | null = null;
 
 function getCtx(): AudioContext {
-  if (!ctx) ctx = new AudioContext();
+  ctx ??= new AudioContext();
   return ctx;
 }
 

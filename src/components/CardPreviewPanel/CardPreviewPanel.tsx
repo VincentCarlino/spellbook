@@ -78,9 +78,9 @@ export function CardPreviewPanel() {
                 <span className={styles.metaDim}>{xyz ? 'Rank' : 'Lv'} {previewCard.level}</span>
               </span>
             )}
-            {monster && (previewCard.attribute || previewCard.race) && (
+            {monster && (previewCard.attribute ?? previewCard.race) && (
               <span className={styles.metaRow}>
-                {[previewCard.attribute, previewCard.race].filter(Boolean).join(' / ')}
+                {[previewCard.attribute ?? null, previewCard.race ?? null].filter(Boolean).join(' / ')}
               </span>
             )}
             {monster && previewCard.atk != null && (

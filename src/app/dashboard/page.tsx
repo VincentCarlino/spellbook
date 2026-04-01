@@ -119,7 +119,7 @@ export default function DashboardPage() {
               </>
             );
             return "href" in card && card.href ? (
-              <Link key={card.label} href={card.href as string} className={cardClass}>
+              <Link key={card.label} href={card.href} className={cardClass}>
                 {content}
               </Link>
             ) : (

@@ -71,14 +71,12 @@ export function Card({ card, onContextMenu }: Props) {
       // Multi-card: accumulate canvas deltas and apply (local + broadcast) at most once per frame.
       pendingDeltaRef.current.dx += data.deltaX * sign;
       pendingDeltaRef.current.dy += data.deltaY * sign;
-      if (rafRef.current === null) {
-        rafRef.current = requestAnimationFrame(() => {
-          const { dx, dy } = pendingDeltaRef.current;
-          pendingDeltaRef.current = { dx: 0, dy: 0 };
-          rafRef.current = null;
-          dispatch({ type: 'MOVE_CARDS', payload: { ids: dragIdsRef.current, dx, dy } });
-        });
-      }
+      rafRef.current ??= requestAnimationFrame(() => {
+        const { dx, dy } = pendingDeltaRef.current;
+        pendingDeltaRef.current = { dx: 0, dy: 0 };
+        rafRef.current = null;
+        dispatch({ type: 'MOVE_CARDS', payload: { ids: dragIdsRef.current, dx, dy } });
+      });
     } else {
       // Single card: accumulate canvas position via deltas and apply at most once per frame.
       // Using deltaX/deltaY (not data.x/data.y) prevents the position-prop-reset feedback
@@ -87,13 +85,11 @@ export function Card({ card, onContextMenu }: Props) {
         x: pendingPosRef.current.x + data.deltaX * sign,
         y: pendingPosRef.current.y + data.deltaY * sign,
       };
-      if (rafRef.current === null) {
-        rafRef.current = requestAnimationFrame(() => {
-          const { x, y } = pendingPosRef.current;
-          rafRef.current = null;
-          dispatch({ type: 'MOVE_CARD', payload: { id: card.id, x, y } });
-        });
-      }
+      rafRef.current ??= requestAnimationFrame(() => {
+        const { x, y } = pendingPosRef.current;
+        rafRef.current = null;
+        dispatch({ type: 'MOVE_CARD', payload: { id: card.id, x, y } });
+      });
     }
   };
 

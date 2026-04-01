@@ -21,7 +21,7 @@ export function TurnIndicator() {
 
   return (
     <div className={styles.indicator}>
-      <span className={styles.playerLabel}>{turn === 'p1' ? 'P1' : 'P2'}'s Turn</span>
+      <span className={styles.playerLabel}>{turn === 'p1' ? 'P1' : 'P2'}&apos;s Turn</span>
       <div className={styles.phases}>
         {PHASES.map((p) => (
           <button

@@ -23,7 +23,7 @@ export function useCardDatabase(): CardDatabase {
         setLoading(false);
       })
       .catch(err => {
-        if (err.name !== 'AbortError') {
+        if ((err as Error).name !== 'AbortError') {
           setError((err as Error).message ?? 'Failed to load cards');
           setLoading(false);
         }
