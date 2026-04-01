@@ -63,7 +63,7 @@ export async function loginAction(
   const password = formData.get("password") as string;
 
   try {
-    await signIn("credentials", { email, password, redirectTo: "/" });
+    await signIn("credentials", { email, password, redirectTo: "/dashboard" });
   } catch (err) {
     if (err instanceof AuthError) {
       return { error: "Invalid email or password" };
@@ -75,7 +75,7 @@ export async function loginAction(
 }
 
 export async function discordLoginAction(): Promise<void> {
-  await signIn("discord", { redirectTo: "/" });
+  await signIn("discord", { redirectTo: "/dashboard" });
 }
 
 export async function resendVerificationAction(

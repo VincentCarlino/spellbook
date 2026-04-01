@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-cat-blue: #89b4fa;
+  --color-cat-mauve: #cba6f7;
+  --color-cat-green: #a6e3a1;
+  --color-cat-yellow: #f9e2af;
+  --color-cat-pink: #f38ba8;
+  --color-cat-peach: #fab387;
 }
 
 /* ── Game table base styles ────────────────────────────────────────────────── */
@@ -14,7 +22,10 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: #cdd6f4;
+}
+
+html {
+  transition: background-color 200ms ease, color 200ms ease;
 }

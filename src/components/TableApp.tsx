@@ -323,25 +323,27 @@ export function TableApp() {
   const modalClosed = soloMode === true || opponentConnected || role === 'p2';
 
   return (
-    <TableProvider role={role}>
-      <ContextBridge
-        rawDispatchRef={rawDispatchRef}
-        setSendActionRef={setSendActionRef}
-      />
-      {!modalClosed && (
-        <RoomModal
-          onSolo={handleSolo}
-          onConnect={handleConnect}
-          opponentConnected={opponentConnected}
-          roomFull={roomFull}
-          connectionError={connectionError}
+    <div className="overflow-hidden h-screen w-screen">
+      <TableProvider role={role}>
+        <ContextBridge
+          rawDispatchRef={rawDispatchRef}
+          setSendActionRef={setSendActionRef}
         />
-      )}
-      <TableAppInner
-        role={role}
-        sendPing={room.sendPing}
-      />
-    </TableProvider>
+        {!modalClosed && (
+          <RoomModal
+            onSolo={handleSolo}
+            onConnect={handleConnect}
+            opponentConnected={opponentConnected}
+            roomFull={roomFull}
+            connectionError={connectionError}
+          />
+        )}
+        <TableAppInner
+          role={role}
+          sendPing={room.sendPing}
+        />
+      </TableProvider>
+    </div>
   );
 }
 

@@ -32,3 +32,13 @@ export function decodeYdke(ydkeStr: string): YdkeDecoded {
     side: parsePart(parts[2] ?? ''),
   };
 }
+
+export function encodeYdke(main: number[], extra: number[], side: number[]): string {
+  function encodePart(ids: number[]): string {
+    const buf = new Uint8Array(ids.length * 4);
+    const view = new DataView(buf.buffer);
+    ids.forEach((id, i) => view.setUint32(i * 4, id, true));
+    return btoa(String.fromCharCode(...buf));
+  }
+  return `ydke://${encodePart(main)}!${encodePart(extra)}!${encodePart(side)}!`;
+}

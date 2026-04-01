@@ -2,6 +2,9 @@ import { relations } from "drizzle-orm";
 import { index, pgTableCreator, primaryKey } from "drizzle-orm/pg-core";
 import { type AdapterAccount } from "next-auth/adapters";
 
+// ── Type aliases for schema inference ────────────────────────────────────────
+export type DeckZone = "main" | "extra" | "side";
+
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
  * database instance for multiple projects.
@@ -49,6 +52,63 @@ export const users = createTable("user", (d) => ({
 
 export const usersRelations = relations(users, ({ many }) => ({
   accounts: many(accounts),
+  decks: many(decks),
+}));
+
+// ── Deckbuilder ───────────────────────────────────────────────────────────────
+
+export const decks = createTable(
+  "deck",
+  (d) => ({
+    id: d
+      .varchar({ length: 255 })
+      .notNull()
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    userId: d
+      .varchar({ length: 255 })
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    name: d.varchar({ length: 100 }).notNull(),
+    createdAt: d
+      .timestamp({ withTimezone: true })
+      .$defaultFn(() => new Date())
+      .notNull(),
+    updatedAt: d
+      .timestamp({ withTimezone: true })
+      .$defaultFn(() => new Date())
+      .$onUpdate(() => new Date())
+      .notNull(),
+  }),
+  (t) => [index("deck_user_id_idx").on(t.userId)],
+);
+
+export const decksRelations = relations(decks, ({ one, many }) => ({
+  user: one(users, { fields: [decks.userId], references: [users.id] }),
+  cards: many(deckCards),
+}));
+
+export const deckCards = createTable(
+  "deck_card",
+  (d) => ({
+    id: d
+      .varchar({ length: 255 })
+      .notNull()
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    deckId: d
+      .varchar({ length: 255 })
+      .notNull()
+      .references(() => decks.id, { onDelete: "cascade" }),
+    cardId: d.integer().notNull(),
+    zone: d.varchar({ length: 10 }).notNull().$type<DeckZone>(),
+    position: d.integer().notNull(),
+  }),
+  (t) => [index("deck_card_deck_id_idx").on(t.deckId)],
+);
+
+export const deckCardsRelations = relations(deckCards, ({ one }) => ({
+  deck: one(decks, { fields: [deckCards.deckId], references: [decks.id] }),
 }));
 
 export const accounts = createTable(
