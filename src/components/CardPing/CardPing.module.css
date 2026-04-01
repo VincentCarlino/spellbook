@@ -1,0 +1,62 @@
+.ping {
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid #f9e2af;
+  transform: translate(-50%, -50%) scale(0.4);
+  opacity: 1;
+  animation: ping-expand 1s ease-out forwards;
+}
+
+.ring:nth-child(2) {
+  animation-delay: 0.18s;
+  border-color: #fab387;
+}
+
+.ring:nth-child(3) {
+  animation-delay: 0.36s;
+  border-color: #f38ba8;
+}
+
+.label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  font-weight: 800;
+  font-family: inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f9e2af;
+  white-space: nowrap;
+  text-shadow: 0 0 8px rgba(249, 226, 175, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
+  animation: label-fade 1s ease-out forwards;
+}
+
+@keyframes ping-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes label-fade {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  20%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  70%  { opacity: 1; }
+  100% { opacity: 0; }
+}

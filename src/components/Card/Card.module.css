@@ -1,0 +1,55 @@
+.wrapper {
+  width: 100px;
+  height: 140px;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.15s ease, outline 0.1s ease;
+}
+
+.wrapper:active {
+  cursor: grabbing;
+}
+
+.wrapper.selected {
+  outline: 2px solid rgba(99, 179, 237, 0.9);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  border-radius: 6px;
+}
+
+.inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.face,
+.back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.face img,
+.back img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #1a1a2e;
+  border-radius: 6px;
+}
+
+.back {
+  transform: rotateY(180deg);
+}

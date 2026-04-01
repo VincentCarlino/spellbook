@@ -1,0 +1,81 @@
+.indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  padding: 10px 12px;
+  background: rgba(30, 30, 46, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  user-select: none;
+  min-width: 110px;
+}
+
+.playerLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: #89b4fa;
+  text-align: center;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 2px;
+}
+
+.phases {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.phase {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: rgba(205, 214, 244, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: opacity 0.1s;
+  text-align: left;
+  width: 100%;
+}
+
+.phase:hover {
+  color: rgba(205, 214, 244, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.phaseActive {
+  color: #1e1e2e;
+  background: #cdd6f4;
+  border-color: #cdd6f4;
+}
+
+.phaseActive:hover {
+  color: #1e1e2e;
+  background: #cdd6f4;
+  opacity: 0.9;
+}
+
+.btn {
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid;
+  transition: opacity 0.1s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btnNext {
+  background: rgba(137, 180, 250, 0.12);
+  color: #89b4fa;
+  border-color: rgba(137, 180, 250, 0.3);
+  width: 100%;
+  margin-top: 2px;
+}

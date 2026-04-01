@@ -1,0 +1,35 @@
+.viewport {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background: #111;
+  scrollbar-width: none;
+}
+
+.viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.surface {
+  width: 3000px;
+  height: 2000px;
+  position: relative;
+  background:
+    radial-gradient(ellipse at center, #4e2d6a 0%, #1b4332 100%);
+  background-image:
+    radial-gradient(ellipse at center, #4e2d6a 0%, #1b4332 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 40px,
+      rgba(0,0,0,0.04) 40px,
+      rgba(0,0,0,0.04) 41px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 40px,
+      rgba(0,0,0,0.04) 40px,
+      rgba(0,0,0,0.04) 41px
+    );
+}

@@ -1,0 +1,152 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 20000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: #1e1e2e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.7);
+  width: 480px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #cdd6f4;
+  margin: 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: rgba(205, 214, 244, 0.5);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.closeBtn:hover {
+  color: #cdd6f4;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.body {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-size: 13px;
+  color: rgba(205, 214, 244, 0.7);
+  margin: 0;
+}
+
+.label code {
+  font-family: monospace;
+  color: #cdd6f4;
+}
+
+.pasteRow {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.textarea {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  color: #cdd6f4;
+  font-size: 12px;
+  font-family: monospace;
+  padding: 8px 10px;
+  resize: vertical;
+  outline: none;
+  line-height: 1.5;
+}
+
+.textarea:focus {
+  border-color: rgba(205, 214, 244, 0.35);
+}
+
+.textarea::placeholder {
+  color: rgba(205, 214, 244, 0.25);
+}
+
+.pasteBtn {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  color: #cdd6f4;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 7px 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.pasteBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.errorMsg {
+  font-size: 12px;
+  color: #f38ba8;
+  margin: 0;
+}
+
+.footer {
+  padding: 12px 20px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.importBtn {
+  background: rgba(205, 214, 244, 0.1);
+  border: 1px solid rgba(205, 214, 244, 0.25);
+  border-radius: 6px;
+  color: #cdd6f4;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 8px 20px;
+}
+
+.importBtn:hover:not(:disabled) {
+  background: rgba(205, 214, 244, 0.18);
+}
+
+.importBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

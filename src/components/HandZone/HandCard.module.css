@@ -1,0 +1,59 @@
+.cardSlot {
+  flex-shrink: 0;
+  cursor: grab;
+  user-select: none;
+  position: relative;
+}
+
+.cardSlot:active {
+  cursor: grabbing;
+}
+
+.cardWrapper {
+  width: 80px;
+  height: 112px;
+  transition: transform 0.1s ease;
+}
+
+.cardWrapper:hover {
+  transform: translateY(-6px) !important;
+  z-index: 200 !important;
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  border-radius: 5px;
+}
+
+.cardInner.flipped {
+  transform: rotateY(180deg);
+}
+
+.face,
+.back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.face img,
+.back img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #1a1a2e;
+  border-radius: 5px;
+}
+
+.back {
+  transform: rotateY(180deg);
+}

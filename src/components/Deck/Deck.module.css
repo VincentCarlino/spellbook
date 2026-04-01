@@ -1,0 +1,133 @@
+.container {
+  position: absolute;
+  /* Extra space for the stacked layers behind */
+  padding: 6px 0 0 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* The three stacked card-back layers */
+.stack {
+  position: relative;
+  width: 100px;
+  height: 140px;
+}
+
+.layer {
+  position: absolute;
+  width: 100px;
+  height: 140px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.layer img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.layer1 {
+  top: -6px;
+  left: -6px;
+  opacity: 0.6;
+  filter: brightness(0.7);
+}
+
+.layer2 {
+  top: -3px;
+  left: -3px;
+  opacity: 0.8;
+  filter: brightness(0.85);
+}
+
+.layer3 {
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+
+/* Selected outline */
+.selected .layer3 {
+  outline: 2px solid rgba(99, 179, 237, 0.9);
+  outline-offset: 2px;
+}
+
+/* Count badge */
+.badge {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  background: rgba(20, 20, 35, 0.92);
+  color: #cdd6f4;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 2px 6px;
+  min-width: 22px;
+  text-align: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Drop zones overlay */
+.dropZones {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 140px;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.zone {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: inherit;
+  letter-spacing: 0.03em;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.1s;
+}
+
+.zoneTop {
+  background: rgba(166, 227, 161, 0.35);
+  color: #a6e3a1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.zoneShuffle {
+  background: rgba(249, 226, 175, 0.35);
+  color: #f9e2af;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.zoneBottom {
+  background: rgba(137, 180, 250, 0.35);
+  color: #89b4fa;
+}
+
+/* Empty deck indicator */
+.emptyLabel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  color: rgba(205, 214, 244, 0.5);
+  pointer-events: none;
+  white-space: nowrap;
+}

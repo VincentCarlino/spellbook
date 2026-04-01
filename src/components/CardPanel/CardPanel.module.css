@@ -1,0 +1,100 @@
+.panel {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 9000;
+  width: 300px;
+  background: rgba(30, 30, 46, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 2px 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.header:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.title {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(205, 214, 244, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: inherit;
+}
+
+.chevron {
+  color: rgba(205, 214, 244, 0.45);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: calc(100vh - 80px);
+  transition: max-height 0.25s ease, opacity 0.2s ease, margin-top 0.2s ease;
+  margin-top: 8px;
+  opacity: 1;
+}
+
+.body.collapsed {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 10px;
+  gap: 0;
+}
+
+.tab {
+  flex: 1;
+  padding: 6px 0;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  color: rgba(205, 214, 244, 0.45);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s ease;
+  margin-bottom: -1px;
+}
+
+.tab:hover {
+  color: rgba(205, 214, 244, 0.75);
+}
+
+.tabActive {
+  color: #89b4fa;
+  border-bottom-color: #89b4fa;
+}
+
+.tabContent {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
